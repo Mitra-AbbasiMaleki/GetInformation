@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace GetInformation
 {
@@ -27,11 +27,13 @@ namespace GetInformation
             FirstName = FirstName.ToLower();
 
             var Name = FirstName.ToCharArray();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Write("\nYour FirstName Reverse is : ");
             for (int i = Name.Length - 1; i >= 0; i--)
             {
                 Console.Write($" {Name[i]}");
             }
+            Console.BackgroundColor = ConsoleColor.Black;
 
             Console.WriteLine("\n\nPlease Enter Your LastName!");
             LastName = Console.ReadLine();
@@ -49,11 +51,13 @@ namespace GetInformation
             LastName = LastName.ToLower();
 
             Name = LastName.ToCharArray();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Write("\n\nYour LastName Reverse is : ");
             for (int i = Name.Length - 1; i >= 0; i--)
             {
                 Console.Write($" {Name[i]}");
             }
+            Console.BackgroundColor = ConsoleColor.Black;
 
             Console.WriteLine("\n\nPlease Enter Your birth Year!");
             BirtheYear = Console.ReadLine();
