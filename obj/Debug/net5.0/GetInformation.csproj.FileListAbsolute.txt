@@ -1,0 +1,16 @@
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.exe
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.deps.json
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.runtimeconfig.json
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.runtimeconfig.dev.json
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.dll
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\ref\GetInformation.dll
+E:\dotnet_Practice\GetInformation\bin\Debug\net5.0\GetInformation.pdb
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.csproj.AssemblyReference.cache
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.AssemblyInfoInputs.cache
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.AssemblyInfo.cs
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.csproj.CoreCompileInputs.cache
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.dll
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\ref\GetInformation.dll
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.pdb
+E:\dotnet_Practice\GetInformation\obj\Debug\net5.0\GetInformation.genruntimeconfig.cache
