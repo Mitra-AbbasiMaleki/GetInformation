@@ -25,7 +25,6 @@ namespace GetInformation
             FirstName = FirstName.Trim();
             FirstName = FirstName.Replace(" ", "");
             FirstName = FirstName.ToLower();
-
             var Name = FirstName.ToCharArray();
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Write("\nYour FirstName Reverse is : ");
@@ -49,7 +48,6 @@ namespace GetInformation
             LastName = LastName.Trim();
             LastName = LastName.Replace(" ", "");
             LastName = LastName.ToLower();
-
             Name = LastName.ToCharArray();
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.Write("\n\nYour LastName Reverse is : ");
