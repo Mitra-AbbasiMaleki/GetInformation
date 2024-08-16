@@ -17,7 +17,7 @@ namespace GetInformation
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\nPlease Enter Your First Name");
+                Console.WriteLine("Please Enter Your First Name");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 FirstName = Console.ReadLine();
@@ -26,13 +26,13 @@ namespace GetInformation
             FirstName=FirstName.Replace(" ","");
             FirstName=FirstName.ToLower();
 
-            Console.WriteLine("\nPlease Enter Your Last Name!");
+            Console.WriteLine("Please Enter Your Last Name!");
             LastName = Console.ReadLine();
            while (string.IsNullOrEmpty(LastName))
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\nPlease Enter Your Last Name");
+                Console.WriteLine("Please Enter Your Last Name");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 LastName = Console.ReadLine();
@@ -47,14 +47,14 @@ namespace GetInformation
             //     Console.WriteLine($"Your Name Reverse is {Name[i]}");
             // }
 
-            Console.WriteLine("\nPlease Enter Your birth Year!");
+            Console.WriteLine("Please Enter Your birth Year!");
             BirtheYear=Console.ReadLine();
             isnumber = int.TryParse(BirtheYear, out Year);
             while (isnumber == false)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\nPlease Enter Your birth Year Corectly!");
+                Console.WriteLine("Please Enter Your birth Year Corectly!");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 BirtheYear=Console.ReadLine();
@@ -68,7 +68,7 @@ namespace GetInformation
 
             Age = ThisYear - Year;
 
-            Console.WriteLine("\nPlease Enter 'F' for Female OR 'M' for Male Or 'N' for Not To Say");
+            Console.WriteLine("Please Enter 'F' for Female OR 'M' for Male Or 'N' for Not To Say");
             Gender = Console.ReadLine();
             Gender=Gender.ToUpper();
             
@@ -76,7 +76,7 @@ namespace GetInformation
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\nPlease Enter 'F' for Female OR 'M' for Male");
+                Console.WriteLine("Please Enter 'F' for Female OR 'M' for Male");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Gender = Console.ReadLine();
@@ -122,7 +122,7 @@ namespace GetInformation
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n Your Mobile Number should be start with 09!");
+                    Console.WriteLine("! Your Mobile Number should be start with 09!");
                 }
 
                 isnumber = ulong.TryParse(MobileNumber, out Number);
@@ -130,14 +130,14 @@ namespace GetInformation
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n Please Enter Your MobileNumber Corectly");
+                    Console.WriteLine("! Please Enter Your MobileNumber Corectly");
                 }
                 
                 if (MobileNumber.Length != 11)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n Your MobileNumber Lenght Should be 11 digit");
+                    Console.WriteLine("! Your MobileNumber Lenght Should be 11 digit");
                     check = false;
                 }
                 else
@@ -147,9 +147,9 @@ namespace GetInformation
             }
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nYour Name is : " + FirstName + " " + LastName);
-            Console.WriteLine("\nYour Mobile Number is : "+ MobileNumber);
-            Console.WriteLine($"\nYour Gender is {Gender} and You Are {Age} Year's Old\n") ;
+            Console.WriteLine($"Your Name is : {FirstName} {LastName}");
+            Console.WriteLine($"Your Mobile Number is : {MobileNumber}");
+            Console.WriteLine($"Your Gender is {Gender} and You Are {Age} Year's Old") ;
 
             if (Gender == "Femail" && Age >= 15)
             {
@@ -161,13 +161,13 @@ namespace GetInformation
             {
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("You Can Register in Our Site.\n");
+                Console.WriteLine("You Can Register in Our Site.");
             }
             else
             {
                 Console.BackgroundColor=ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You Can Not Register in Our Site.\n");
+                Console.WriteLine("You Can Not Register in Our Site.");
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
