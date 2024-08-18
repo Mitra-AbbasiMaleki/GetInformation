@@ -59,6 +59,7 @@ namespace GetInformation
 
             Console.WriteLine("\n\nPlease Enter Your birth Year!");
             BirtheYear = Console.ReadLine();
+            BirtheYear=FaToEnNum(BirtheYear);
             isnumber = int.TryParse(BirtheYear, out Year);
             while (isnumber == false)
             {
@@ -75,7 +76,6 @@ namespace GetInformation
                 BirtheYear = "13" + BirtheYear;
                 Year = Convert.ToInt32(BirtheYear);
             }
-
             Age = ThisYear - Year;
 
             Console.WriteLine("Please Enter 'F' for Female OR 'M' for Male Or 'N' for Not To Say");
@@ -114,6 +114,7 @@ namespace GetInformation
             while (flag != true || isnumber != true || check != true)
             {
                 MobileNumber = Console.ReadLine();
+                MobileNumber =FaToEnNum(MobileNumber);
 
                 if (MobileNumber.StartsWith("+98"))
                     MobileNumber = MobileNumber.Replace("+98", "0");
@@ -183,5 +184,50 @@ namespace GetInformation
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
         }
+        public static string  FaToEnNum(string str)
+            {
+                string StrNum="";
+                var item=str.ToCharArray();
+                for (int i = 0; i < item.Length; i++)
+                {
+                    string ragahm=item[i].ToString();
+                    switch (ragahm)
+                    {
+                        case "۰" :
+                            ragahm.Replace("۰","0");
+                            break;
+                        case "۱":
+                            ragahm.Replace("۱","1");
+                            break;
+                        case "۲":
+                            ragahm.Replace("۲","2");
+                            break;
+                        case "۳":
+                            ragahm.Replace("۳","3");
+                            break;
+                        case "۴":
+                            ragahm.Replace("۴","4");
+                            break;
+                        case "۵":
+                            ragahm.Replace("۵","5");
+                            break;
+                        case "۶":
+                            ragahm.Replace("۶","6");
+                            break;
+                        case "۷":
+                            ragahm.Replace("۷","7");
+                            break;
+                        case "۸":
+                            ragahm.Replace("۸","8");
+                            break;
+                        case "۹":
+                            ragahm.Replace("۹","9");
+                            break;
+                    }
+                    StrNum+=ragahm;
+                }
+                return StrNum;
+            }
+
     }
 }
