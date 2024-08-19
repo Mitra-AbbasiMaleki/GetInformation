@@ -175,7 +175,7 @@ namespace GetInformation
         {
             var Name = name.ToCharArray();
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Write("\nYour FirstName Reverse is : ");
+            Console.Write("\nYour Name Reverse is : ");
             for (int i = Name.Length - 1; i >= 0; i--)
             {
                 Console.Write($" {Name[i]}");
