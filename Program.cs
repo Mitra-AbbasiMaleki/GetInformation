@@ -25,14 +25,7 @@ namespace GetInformation
             FirstName = FirstName.Trim();
             FirstName = FirstName.Replace(" ", "");
             FirstName = FirstName.ToLower();
-            var Name = FirstName.ToCharArray();
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Write("\nYour FirstName Reverse is : ");
-            for (int i = Name.Length - 1; i >= 0; i--)
-            {
-                Console.Write($" {Name[i]}");
-            }
-            Console.BackgroundColor = ConsoleColor.Black;
+            ReverseStr(FirstName);
 
             Console.WriteLine("\n\nPlease Enter Your LastName!");
             LastName = Console.ReadLine();
@@ -48,15 +41,8 @@ namespace GetInformation
             LastName = LastName.Trim();
             LastName = LastName.Replace(" ", "");
             LastName = LastName.ToLower();
-            Name = LastName.ToCharArray();
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Write("\n\nYour LastName Reverse is : ");
-            for (int i = Name.Length - 1; i >= 0; i--)
-            {
-                Console.Write($" {Name[i]}");
-            }
-            Console.BackgroundColor = ConsoleColor.Black;
-
+            ReverseStr(LastName);
+            
             Console.WriteLine("\n\nPlease Enter Your birth Year!");
             BirtheYear = Console.ReadLine();
             BirtheYear=FaToEnNum(BirtheYear);
@@ -107,6 +93,7 @@ namespace GetInformation
                     Gender = "";
                     break;
             }
+            
             isnumber = false;
             flag = false;
             check = false;
@@ -159,7 +146,7 @@ namespace GetInformation
             }
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Your Name is : {FirstName} {LastName}");
+            Console.WriteLine($"\nYour Name is : {FirstName} {LastName}");
             Console.WriteLine($"Your Mobile Number is : {MobileNumber}");
             Console.WriteLine($"Your Gender is {Gender} and You Are {Age} Year's Old");
 
@@ -183,6 +170,17 @@ namespace GetInformation
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        public static void ReverseStr(string name)
+        {
+            var Name = name.ToCharArray();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Write("\nYour FirstName Reverse is : ");
+            for (int i = Name.Length - 1; i >= 0; i--)
+            {
+                Console.Write($" {Name[i]}");
+            }
+            Console.BackgroundColor = ConsoleColor.Black;
         }
         public static string  FaToEnNum(string str)
             {
