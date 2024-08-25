@@ -5,158 +5,254 @@ namespace GetInformation
     class Program
     {
         static void Main(string[] args)
-        {
-            string FirstName, LastName, Gender, BirtheYear, MobileNumber = default;
-            int Age, Year = 0;
-            ulong Number = 0;
-            int ThisYear = 1403;
-            bool isnumber, flag, check = default;
-            Console.WriteLine("Please Enter Your First Name!");
-            FirstName = Console.ReadLine();
-            while (string.IsNullOrEmpty(FirstName))
-            {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please Enter Your FirstName");
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Gray;
-                FirstName = Console.ReadLine();
-            }
-            FirstName = FirstName.Trim();
-            FirstName = FirstName.Replace(" ", "");
-            FirstName = FirstName.ToLower();
-            ReverseStr(FirstName);
+        { string firstname, lastname, gender, birthyear, mobilenumber = string.Empty;
+            string message = string.Empty;
+            int age = 0;
+            bool isregister = default;
 
-            Console.WriteLine("\n\nPlease Enter Your LastName!");
-            LastName = Console.ReadLine();
-            while (string.IsNullOrEmpty(LastName))
+            while (true)
+            {
+                if (IsExit(message))
+                {
+                    PrintExit();
+                    break;
+                }
+                
+                firstname = UserDataHandler(nameof(firstname));
+                PrintUserOutput("FirstName", firstname);
+                ShowReverseString("FirstName", firstname);
+                PrintSeperator();
+
+                lastname = UserDataHandler(nameof(lastname));
+                PrintUserOutput("LastName", lastname);
+                ShowReverseString("LastName", lastname);
+                PrintSeperator();
+
+                birthyear = UserDataHandler(nameof(birthyear));
+                age = CalculateAge(birthyear);
+                PrintUserOutput("Age", age.ToString());
+                PrintSeperator();
+
+                mobilenumber = CheckMobileNumber(nameof(mobilenumber));
+                PrintUserOutput("MobileNumber", mobilenumber);
+                PrintSeperator();
+
+                gender = GetGender(nameof(gender));
+                PrintUserOutput("Gender", gender);
+                PrintSeperator();
+
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.White;
+                PrintProfile(name: firstname, family: lastname, age: age, phone: mobilenumber);
+
+                isregister = IsRegister(gender:gender,age:age);
+                PrintIsRegister(isregister);
+                message = ShowFirstMessage();
+            }
+        }
+
+        static string ShowFirstMessage()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Black;
+            string message ="\nPlease Press Enter for Continue or Type E  for Exit from App";
+            Console.WriteLine(message);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            message =GetStringDataFromUser();
+            return message;
+        }
+        static bool IsExit(string str)
+        {
+            if (str == "e" || str == "exit")
+                return true;
+            else
+                return false;
+        }
+
+        static void PrintExit()
+        {
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("You Exit From App. * have a good day! *");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        static void PrintUserOutput(string property, string str)
+        {
+            Console.WriteLine($"Your {property} is : {str}");
+        }
+
+        static void PrintSeperator()
+          => Console.WriteLine("**********************\n");
+
+        static string GetStringDataFromUser()
+        {
+            string userInput = Console.ReadLine() ?? "";
+            userInput = userInput.Trim();
+            userInput = userInput.Replace(" ", "");
+            userInput = userInput.ToLower();
+            return userInput;
+        }
+        static void PrintProfile(string name,string family,int age,string phone)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            PrintUserOutput("firstname", name);
+            PrintUserOutput("lastname", family);
+            PrintUserOutput("age", age.ToString());
+            PrintUserOutput("mobilenumber", phone);
+        }
+
+        static string GetMessage(string property)
+            => $"Please Enter Your {property}!";
+
+        static void PrintMessage(string message)
+        {
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(message);
+        }
+        static string UserDataHandler(String property)
+        {
+            Console.WriteLine(GetMessage(property));
+            string userData = GetStringDataFromUser();
+
+            while (string.IsNullOrEmpty(userData))
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please Enter Your Last Name");
+                Console.WriteLine(GetMessage(property));
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
-                LastName = Console.ReadLine();
+                userData = GetStringDataFromUser();
             }
-            LastName = LastName.Trim();
-            LastName = LastName.Replace(" ", "");
-            LastName = LastName.ToLower();
-            ReverseStr(LastName);
-            
-            Console.WriteLine("\n\nPlease Enter Your birth Year!");
-            BirtheYear = Console.ReadLine();
-            BirtheYear=FaToEnNum(BirtheYear);
-            isnumber = int.TryParse(BirtheYear, out Year);
+            return userData;
+        }
+
+        static void ShowReverseString (string property,string str)
+        {
+            var strarr = str.ToCharArray();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Write($"\nYour {property} Reverse is : ");
+            for (int i = strarr.Length - 1; i >= 0; i--)
+            {
+                Console.Write($" {strarr[i]}");
+            }
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("\n");
+        }
+
+        static int CalculateAge (string birthYear)
+        {
+            int age,year = 0;
+            int thisyear = 1403;
+            birthYear = FaToEnNum(birthYear);
+            bool isnumber = int.TryParse(birthYear, out year);
             while (isnumber == false)
             {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please Enter Your birth Year Corectly!");
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Gray;
-                BirtheYear = Console.ReadLine();
-                isnumber = int.TryParse(BirtheYear, out Year);
+                birthYear = UserDataHandler("birthyear");
+                isnumber = int.TryParse(birthYear, out year);
             }
-            if (BirtheYear.Length == 2 && !BirtheYear.StartsWith("13"))
+            if (birthYear.Length == 2 && !birthYear.StartsWith("13"))
             {
-                BirtheYear = "13" + BirtheYear;
-                Year = Convert.ToInt32(BirtheYear);
+                birthYear = "13" + birthYear;
+                year = Convert.ToInt32(birthYear);
             }
-            Age = ThisYear - Year;
+            age = thisyear - year;
+            return age;
+        }
 
-            Console.WriteLine("Please Enter 'F' for Female OR 'M' for Male Or 'N' for Not To Say");
-            Gender = Console.ReadLine();
-            Gender = Gender.ToUpper();
-
-            while (Gender != "F" && Gender != "M" && Gender != "N")
-            {
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please Enter 'F' for Female OR 'M' for Male");
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Gender = Console.ReadLine();
-                Gender = Gender.ToUpper();
-            }
-            switch (Gender)
-            {
-                case "M":
-                    Gender = "Mail";
-                    break;
-                case "F":
-                    Gender = "Femail";
-                    break;
-                case "N":
-                    Gender = "Not To Say";
-                    break;
-                default:
-                    Gender = "";
-                    break;
-            }
-            
-            isnumber = false;
-            flag = false;
-            check = false;
-            Console.WriteLine("\nPlease Enter Your Mobile Number!");
+        static string CheckMobileNumber(string mobileNumber)
+        {
+            ulong phonenumber = 0;
+            string message = string.Empty;
+            bool isnumber = false;
+            bool flag = false;
+            bool check = false;
             while (flag != true || isnumber != true || check != true)
             {
-                MobileNumber = Console.ReadLine();
-                MobileNumber =FaToEnNum(MobileNumber);
+                mobileNumber = UserDataHandler(nameof(mobileNumber));
+                mobileNumber = FaToEnNum(mobileNumber);
 
-                if (MobileNumber.StartsWith("+98"))
-                    MobileNumber = MobileNumber.Replace("+98", "0");
+                if (mobileNumber.StartsWith("+98"))
+                    mobileNumber = mobileNumber.Replace("+98", "0");
 
-                if (MobileNumber.StartsWith("0098"))
-                    MobileNumber = MobileNumber.Replace("0098", "0");
+                if (mobileNumber.StartsWith("0098"))
+                    mobileNumber = mobileNumber.Replace("0098", "0");
 
-                if (MobileNumber.StartsWith("098"))
-                    MobileNumber = MobileNumber.Replace("098", "0");
+                if (mobileNumber.StartsWith("098"))
+                    mobileNumber = mobileNumber.Replace("098", "0");
 
-                if (MobileNumber.Length == 10 && !MobileNumber.StartsWith("0"))
+                if (mobileNumber.Length == 10 && !mobileNumber.StartsWith("0"))
                 {
-                    MobileNumber = "0" + MobileNumber;
+                    mobileNumber = "0" + mobileNumber;
                 }
-                flag = MobileNumber.StartsWith("09");
+                flag = mobileNumber.StartsWith("09");
                 if (flag == false)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("! Your Mobile Number should be start with 09!");
+                   message="! Your Mobile Number should be start with 09!";
+                   PrintMessage(message);
                 }
 
-                isnumber = ulong.TryParse(MobileNumber, out Number);
+                isnumber = ulong.TryParse(mobileNumber, out phonenumber);
                 if (isnumber == false)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("! Please Enter Your MobileNumber Corectly");
+                    message="! Please Enter Your mobileNumber Corectly";
+                    PrintMessage(message);
                 }
 
-                if (MobileNumber.Length != 11)
+                if (mobileNumber.Length != 11)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkRed;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("! Your MobileNumber Lenght Should be 11 digit");
+                    message="! Your mobileNumber Lenght Should be 11 digit";
+                    PrintMessage(message);
                     check = false;
                 }
                 else
                     check = true;
+                
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Gray;
+               
             }
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"\nYour Name is : {FirstName} {LastName}");
-            Console.WriteLine($"Your Mobile Number is : {MobileNumber}");
-            Console.WriteLine($"Your Gender is {Gender} and You Are {Age} Year's Old");
-
-            if (Gender == "Femail" && Age >= 15)
+            return mobileNumber;
+        }
+        static string GetGender(string gender)
+        {
+            string str = "Gender :'F' for Female OR 'M' for Male OR 'N' for Not To Say";
+             while (gender != "f" && gender != "m" && gender != "n")
+                gender = UserDataHandler(str);
+            switch (gender)
             {
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("You Can Register in Our Site.");
+                case "m":
+                    gender = "Male";
+                    break;
+                case "f":
+                    gender = "Femail";
+                    break;
+                case "n":
+                    gender = "Not To Say";
+                    break;
+                default:
+                    gender = "";
+                    break;
             }
-            else if (Gender == "Male" && Age >= 18)
+            return gender;
+        }
+        static bool IsRegister (string gender,int age)
+        {
+            bool isRegister=default;
+            if (gender == "Femail" && age >= 15)
+                isRegister = true;
+            else if (gender == "Male" && age >= 18)
+                isRegister = true;
+            else isRegister = false;
+            return isRegister;
+        }
+        static void PrintIsRegister(bool isRegister)
+        {
+            if (isRegister)
             {
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -170,17 +266,6 @@ namespace GetInformation
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
-        }
-        public static void ReverseStr(string name)
-        {
-            var Name = name.ToCharArray();
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Write("\nYour FirstName Reverse is : ");
-            for (int i = Name.Length - 1; i >= 0; i--)
-            {
-                Console.Write($" {Name[i]}");
-            }
-            Console.BackgroundColor = ConsoleColor.Black;
         }
         public static string  FaToEnNum(string str)
             {
