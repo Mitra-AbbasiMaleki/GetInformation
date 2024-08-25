@@ -267,6 +267,17 @@ namespace GetInformation
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
         }
+        public static void ReverseStr(string name)
+        {
+            var Name = name.ToCharArray();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Write("\nYour FirstName Reverse is : ");
+            for (int i = Name.Length - 1; i >= 0; i--)
+            {
+                Console.Write($" {Name[i]}");
+            }
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
         public static string  FaToEnNum(string str)
             {
                 string StrNum="";
